@@ -1,6 +1,6 @@
 # Terceira versão — texto, cenas fixas e interação tátil
 
-Status: aguardando aprovação explícita do usuário. Somente planejamento; não iniciar implementação, instalação, commits de features ou publicação nesta etapa. Complementa os planos anteriores sem substituir suas pendências.
+Status: aprovado pelo usuário, implementado e validado localmente. Resultados e limitações em docs/validacao.md. Complementa os planos anteriores sem substituir suas pendências. Não houve deploy.
 
 ## Objetivo e diagnóstico
 
@@ -129,21 +129,21 @@ Sem nova dependência prevista: GSAP/SplitText/ScrollTrigger e Lenis já estão 
 
 ## Sequência de execução e commits propostos
 
-Todos os itens abaixo aguardam aprovação.
+Etapas executadas em commits por funcionalidades e correções. Alguns itens foram agrupados quando compartilhavam a mesma estrutura; as provas realizadas e as verificações ainda indisponíveis estão no relatório de validação.
 
-1. [ ] docs(design): registrar composição final e storyboard das duas cenas. Prova: cenários desktop/mobile/reduced motion definidos, sem iniciar cenas antes de esclarecer os alvos.
-2. [ ] feat(text): revelar títulos horizontalmente com máscaras acessíveis. Prova: fontes, acentos, quebra de linha, resize e texto completo sem JS/reduced motion.
-3. [ ] refactor(motion): preparar medição e lifecycle para cenas fixas. Prova: refresh sem ciclo com spacers e cleanup sem duplicação.
-4. [ ] feat(cycle): criar cena ilustrada com pin e quatro estágios. Prova: viewport mantém stage estável enquanto progresso muda; liberar no fim e reverter ao voltar.
-5. [ ] feat(impact): criar pausa curta com frase e transformação. Prova: benefícios/referências acessíveis em fluxo normal e âncoras corretas.
-6. [ ] feat(stickers): implementar adesivo limitado com arraste, toque/clique, teclado e reset. Prova: cancelamento, foco, bounds e resize.
-7. [ ] feat(hero): integrar objetos manipuláveis e refinar profundidade. Prova: nenhum conflito entre scroll e drag ou bloqueio do CTA.
-8. [ ] feat(guide): adicionar recortes interativos à área ilustrada. Prova: seleção de método e passos preservada.
-9. [ ] feat(start): redesenhar fechamento como kit de papel. Prova: mesma ação do checklist, layout mobile legível e botão estável.
-10. [ ] feat(start): reagir ao progresso com broto e adesivos. Prova: completar e desfazer marcações atualiza arte e status corretamente.
-11. [ ] fix(motion): calibrar ritmo, viewport baixo e reduced motion. Prova: percurso inteiro por mouse, toque emulado, teclado e hashes sem armadilhas.
-12. [ ] test(motion): validar cenas, objetos e regressões. Prova: testes focados, lint, typecheck, build e verificações de navegador.
-13. [ ] docs(quality): registrar auditoria final e limitações. Prova: relatório descreve somente verificações executadas.
+1. [x] docs(design): registrar composição final e storyboard das duas cenas. Prova: cenários desktop/mobile/reduced motion definidos, sem iniciar cenas antes de esclarecer os alvos.
+2. [x] feat(text): revelar títulos horizontalmente com máscaras acessíveis. Prova: fontes, acentos, quebra de linha, resize e texto completo sem JS/reduced motion.
+3. [x] refactor(motion): preparar medição e lifecycle para cenas fixas. Prova: refresh sem ciclo com spacers e cleanup sem duplicação.
+4. [x] feat(cycle): criar cena ilustrada com pin e quatro estágios. Prova: viewport mantém stage estável enquanto progresso muda; liberar no fim e reverter ao voltar.
+5. [x] feat(impact): criar pausa curta com frase e transformação. Prova: benefícios/referências acessíveis em fluxo normal e âncoras corretas.
+6. [x] feat(stickers): implementar adesivo limitado com arraste, toque/clique, teclado e reset. Prova: cancelamento, foco, bounds e resize.
+7. [x] feat(hero): integrar objetos manipuláveis e refinar profundidade. Prova: nenhum conflito entre scroll e drag ou bloqueio do CTA.
+8. [x] feat(guide): adicionar recortes interativos à área ilustrada. Prova: seleção de método e passos preservada.
+9. [x] feat(start): redesenhar fechamento como kit de papel. Prova: mesma ação do checklist, layout mobile legível e botão estável.
+10. [x] feat(start): reagir ao progresso com broto e adesivos. Prova: completar e desfazer marcações atualiza arte e status corretamente.
+11. [x] fix(motion): calibrar ritmo, viewport baixo e reduced motion. Prova: percurso inteiro por mouse, toque emulado, teclado e hashes sem armadilhas.
+12. [x] test(motion): validar cenas, objetos e regressões. Prova: testes focados, lint, typecheck, build e verificações de navegador.
+13. [x] docs(quality): registrar auditoria final e limitações. Prova: relatório descreve somente verificações executadas.
 
 Commits durante a execução, em etapas reais; correções terão commits próprios quando aparecerem. Não reescrever o histórico existente para simular desenvolvimento anterior. Push após a implementação e validação, conforme autorização persistente da sessão.
 

@@ -42,3 +42,25 @@ Provas desta etapa:
 - Trace local de carregamento, Chrome, CPU simulada em 4×, sem limitação de rede: LCP 735 ms e CLS 0,00. Sem dados de campo/CrUX ou INP representativo. Cache local, tamanho da janela e ambiente de teste limitam a comparação com usuários reais.
 
 Continuam pendentes Safari/Firefox, dispositivo físico e teste nativo de reduced motion. Alertas de dependências de desenvolvimento, confirmação de licenças e configuração do domínio permanecem os registrados acima. Não houve deploy.
+
+## Terceira versão — cenas e kit tátil
+
+Implementados três títulos com revelação horizontal de cor via SplitText/ScrollTrigger, duas cenas ilustradas com pin, sete adesivos manipuláveis distribuídos no hero/guia/kit e fechamento assimétrico com cartões de checklist e vaso reativo. SVGs locais em components/nature-art.tsx substituem os emojis do ciclo; não foi adicionada dependência. Estilos desta etapa ficam em app/interactive.css.
+
+As cenas fixas são habilitadas apenas com largura >= 1024 px, altura >= 800 px, ponteiro preciso e movimento permitido. Fora dessas condições, todo o conteúdo segue em fluxo normal. O ciclo tem quatro etapas visíveis e a imagem muda com a rolagem; a cena de impacto fica presa por um intervalo menor. Benefícios e links permanecem em fluxo normal. Os títulos continuam semanticamente únicos; espaços explícitos nas quebras preservam a frase acessível.
+
+Os adesivos usam área delimitada, tamanho visual incluindo rotação, captura de ponteiro, teclado, Escape/Home, reset e alternativa selecionar/tocar no destino. A área de manipulação é separada dos controles e dos transforms do scroll. O vaso mostra quatro estados (0–3 marcações), incluindo reversão ao desmarcar.
+
+Verificações executadas:
+
+- Build final de produção, ESLint, TypeScript e três testes Node passaram (regras de materiais e limites dos adesivos, incluindo resize/área nula).
+- tests/scenes.browser.mjs passou em 1440×1000 e 320×800: duas cenas presas no desktop, stage com top estável enquanto o visual interno muda, reversão, marcações/desmarcações, folhas visíveis no estágio final, reposicionamento por clique e reset por teclado. Repetido na build de produção em desktop.
+- Arraste real de um adesivo do kit, através da ferramenta do Chrome, alterou sua posição. Setas e Escape também foram exercitados.
+- Em 768×900 e 1440×700: nenhum pin e nenhum transbordamento horizontal. Em 320 px: conteúdo acessível em uma coluna e sem pin.
+- Simulação JS de mudança de preferência com a página aberta: pins 2 → 0 → 2; fragmentos de SplitText removidos durante reduced motion; Lenis removido. Simulação não equivale a testar a preferência nativa do sistema/CSS.
+- tests/motion.browser.mjs da versão anterior passou na build de produção: suavização, reversão do hero, âncoras com offset, histórico, guia, materiais, FAQ, checklist e footer.
+- Um conflito de DOM apareceu no hot reload de desenvolvimento. O lifecycle das cenas passou para useLayoutEffect, para reverter SplitText e os wrappers de pin antes das atualizações do React. A build e as interações em produção ficaram sem erros/avisos no console inspecionado. Não se declara cobertura de toda sequência possível de hot reload.
+- Lighthouse mobile final: acessibilidade 100, boas práticas 100 e SEO 100; 55 auditorias aprovadas e nenhuma falha. O primeiro resultado foi 97 em acessibilidade; a cor de uma anotação do kit foi corrigida e a auditoria repetida. Resumo em docs/lighthouse-scenes.json. A ferramenta não fornece pontuação de performance.
+- Exceção pontual de design em .impeccable/config.json para gradient-text somente em app/interactive.css: trata-se da máscara horizontal entre duas cores sólidas aprovada pelo usuário, não de um gradiente decorativo. Não houve supressão global de regras.
+
+Limites: sem validação nova em Safari/Firefox, hardware físico, zoom nativo 200% ou configuração nativa de reduced motion. Não foram coletadas novas métricas de performance/INP; os números da etapa anterior não são medições desta versão. Licenças, domínio/metadataBase e alertas de desenvolvimento permanecem pendentes conforme os registros anteriores. Sem persistência, backend ou deploy.

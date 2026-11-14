@@ -34,6 +34,10 @@ O site funciona sem domínio configurado; canonical e sitemap ficam para a publi
 
 `tests/motion.browser.mjs` contém uma verificação com asserts para executar no console do navegador após abrir a página: copie a função removendo apenas `export default` e execute `await verifyMotion()`. Ela verifica suavização, reversão, histórico, controles e ausência de overflow; altera somente o estado temporário da visita. Repita com viewport mobile e preferência de movimento reduzido. Esse roteiro complementa `npm test`, que verifica os dados e regras de compostagem.
 
+A terceira versão acrescenta duas cenas fixas em desktops com espaço suficiente, revelação horizontal dos títulos e adesivos no hero, guia e kit final. `app/interactive.css` contém essa composição. Os adesivos podem ser arrastados, movidos por setas ou selecionados e posicionados por clique/toque na área; Escape/Home e “Repor adesivos” restauram posições. O checklist faz o vaso evoluir de terra para planta. Tudo fica apenas no estado temporário da visita.
+
+`tests/scenes.browser.mjs` usa o mesmo procedimento de console: remova `export default` e execute `await verifyScenes()` para verificar pins, reversão, estados da planta e posicionamento sem arraste. Pins ficam desligados no mobile, em janelas baixas e em movimento reduzido.
+
 ## Recursos e autoria
 
 - Liquid Navbar / Nimbus UI: código fornecido pelo usuário, crédito original a guglielmogiannattasio.it preservado no arquivo.
