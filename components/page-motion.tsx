@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -34,7 +34,7 @@ export function PageMotion(){
     });
     return () => media.revert();
   }, []);
-  useEffect(()=>{
+  useLayoutEffect(()=>{
     gsap.registerPlugin(ScrollTrigger);
     const media=gsap.matchMedia();
     media.add({ desktop: "(min-width: 761px) and (pointer: fine)", pin: "(min-width: 1024px) and (min-height: 800px) and (pointer: fine)", motion: "(prefers-reduced-motion: no-preference)" },(context)=>{
