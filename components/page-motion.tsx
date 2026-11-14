@@ -85,6 +85,17 @@ export function PageMotion(){
         .fromTo(".guide-tag", { y: 14, rotation: -12 }, { y: -10, rotation: -3 }, 0);
       gsap.fromTo(".result-emoji", { y: desktop ? 18 : 8, rotation: -18 }, { y: desktop ? -18 : -6, rotation: 6, ease: "none",
         scrollTrigger: { id: "material-depth", trigger: ".material-result", start: "top 90%", end: "bottom 20%", scrub: 0.5 } });
+      if (desktop) gsap.fromTo(".faq-doodle", { y: 22, rotation: -28 }, { y: -22, rotation: 8, ease: "none",
+        scrollTrigger: { id: "faq-drift", trigger: ".faq-section", start: "top bottom", end: "bottom top", scrub: 0.7 } });
+      gsap.from(".start > .eyebrow, .start > h2", { y: 25, opacity: 0, stagger: 0.1, duration: 0.8,
+        ease: "power2.out", clearProps: "all", scrollTrigger: { trigger: ".start", start: "top 85%", once: true } });
+      let active = true;
+      const refresh = () => ScrollTrigger.refresh(true);
+      const observer = new ResizeObserver(refresh);
+      const main = document.querySelector("main");
+      if (main) observer.observe(main);
+      void document.fonts.ready.then(() => { if (active) refresh(); });
+      return () => { active = false; observer.disconnect(); };
     });return()=>media.revert();
   },[]);return null;
 }
