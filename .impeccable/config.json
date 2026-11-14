@@ -7,10 +7,10 @@
         "rule": "gradient-text",
         "value": "*",
         "files": [
-          "app/globals.css"
+          "app/interactive.css"
         ],
-        "createdAt": "2026-11-14T20:24:07.961Z",
-        "reason": "user confirmed: approved horizontal scroll reveal uses a hard-stop mask between two readable solid colors"
+        "createdAt": "2026-11-14T20:27:11.236Z",
+        "reason": "user confirmed: approved horizontal reveal uses a hard-stop scroll mask, moved from globals.css to interactive.css"
       }
     ]
   }
