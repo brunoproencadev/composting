@@ -77,6 +77,12 @@ export function PageMotion(){
         gsap.fromTo(element, { y: desktop ? 18 : 8, rotation: -12 }, { y: -6, rotation: 8, ease: "none",
           scrollTrigger: { trigger: element.parentElement, start: "top 90%", end: "bottom 25%", scrub: 0.5 } });
       });
+      const guide = gsap.timeline({ defaults: { ease: "none", duration: 1 }, scrollTrigger: {
+        id: "guide-layers", trigger: ".guide", start: "top 90%", end: "bottom 20%", scrub: 0.7,
+      } });
+      guide.fromTo(".guide-pot", { y: desktop ? 32 : 12, rotation: -18 }, { y: desktop ? -24 : -8, rotation: 4 }, 0)
+        .fromTo(".guide-flower", { rotation: -25, y: 16 }, { rotation: desktop ? 65 : 15, y: -12 }, 0)
+        .fromTo(".guide-tag", { y: 14, rotation: -12 }, { y: -10, rotation: -3 }, 0);
     });return()=>media.revert();
   },[]);return null;
 }
