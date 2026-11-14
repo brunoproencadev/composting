@@ -37,7 +37,7 @@ export function PageMotion(){
   useEffect(()=>{
     gsap.registerPlugin(ScrollTrigger);
     const media=gsap.matchMedia();
-    media.add({ desktop: "(min-width: 761px) and (pointer: fine)", pin: "(min-width: 1024px) and (min-height: 800px)", motion: "(prefers-reduced-motion: no-preference)" },(context)=>{
+    media.add({ desktop: "(min-width: 761px) and (pointer: fine)", pin: "(min-width: 1024px) and (min-height: 800px) and (pointer: fine)", motion: "(prefers-reduced-motion: no-preference)" },(context)=>{
       if (!context.conditions?.motion) return;
       const desktop = context.conditions.desktop;
       const pinned = context.conditions.pin;
