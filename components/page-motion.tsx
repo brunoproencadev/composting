@@ -48,6 +48,7 @@ export function PageMotion(){
         .fromTo(".garden-peel", { y: -35, rotation: -15 }, { y: 40, rotation: 20, duration: 1.2 }, 0)
         .fromTo(".garden-leaf", { x: 65, y: -20, rotation: 30 }, { x: -10, y: 32, rotation: -12, duration: 1.2 }, 0.6)
         .fromTo(".garden-worm", { x: -30, y: 12 }, { x: 35, y: -8, duration: 1 }, 1.3)
+        .to(".garden-peel, .garden-leaf", { scale: .55, opacity: .2, duration: .9 }, 1.4)
         .fromTo(".garden-sprout", { scale: 0.35, y: 45 }, { scale: 1.15, y: -8, duration: 1.2, transformOrigin: "50% 100%" }, 1.8)
         .fromTo(".garden-spark", { rotation: -20, scale: 0.5 }, { rotation: 80, scale: 1, duration: 1 }, 2);
       const impact = gsap.timeline({ defaults: { ease: "none", duration: 1 }, scrollTrigger: {
