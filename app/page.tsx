@@ -1,3 +1,5 @@
+import { CycleScene, ImpactIntro } from "@/components/scroll-scenes";
+import { StickerField } from "@/components/ui/draggable-sticker";
 import { PageMotion } from "@/components/page-motion";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Leaf, Sprout, Droplets, Wind, MoveUpRight } from "lucide-react";
@@ -24,7 +26,7 @@ export default function Home() {
             <a className="button primary" href="#como-fazer">Bora compostar <ArrowUpRight size={20} /></a>
             <div className="hero-footnote"><span className="mini-leaf"><Leaf size={19}/></span> Bom para suas plantas.<br />Melhor ainda para o planeta.</div>
           </div>
-          <div className="hero-art"><div className="orbit orbit-one"/><div className="orbit orbit-two"/>
+          <div className="hero-art"><StickerField variant="hero"/><div className="orbit orbit-one"/><div className="orbit orbit-two"/>
             <div className="hero-photo"><Image src="/images/garden.jpg" alt="Plantas, terra e ferramentas de jardinagem sobre uma bancada" fill priority sizes="(max-width: 760px) 90vw, 48vw" /></div>
             <div className="round-stamp"><svg viewBox="0 0 150 150" aria-hidden="true"><defs><path id="stamp-circle" d="M75 75m-56 0a56 56 0 1 1 112 0a56 56 0 1 1-112 0" /></defs><text><textPath href="#stamp-circle" textLength="350">MENOS DESCARTE · MAIS VIDA · </textPath></text></svg><Sprout size={42}/></div>
             <span className="art-label">o futuro tem raízes.</span><div className="hero-note"><span>100% ciclo da natureza</span><span>resíduo → solo → vida <MoveUpRight size={16}/></span></div>
@@ -34,13 +36,8 @@ export default function Home() {
         <div className="hero-bottom"><a href="#ciclo"><ArrowDown size={17}/> Role para ver a natureza trabalhar</a><span>COMEÇA NA SUA COZINHA. CONTINUA NO PLANETA.</span></div>
       </section>
       <div className="ticker" aria-hidden="true"><div>restos viram recomeços <span>✳</span> o solo agradece <span>✳</span> menos lixo, mais vida <span>✳</span> restos viram recomeços <span>✳</span> o solo agradece <span>✳</span></div></div>
-      <section id="ciclo" className="section wrap cycle-section"><div className="section-top"><span className="eyebrow">01 / ENTENDA O CICLO</span><span className="tiny-note">A NATUREZA JÁ SABE O CAMINHO.</span></div>
-        <div className="section-heading"><h2>Não é lixo.<br />É <em>vida em processo.</em></h2><p>A compostagem é a decomposição controlada de matéria orgânica, com a ajuda de oxigênio e pequenos organismos. O resultado? Um composto que nutre o solo.</p></div>
-        <div className="cycle-track">
-          {[{n:"01",emoji:"🍌",title:"Separe",text:"Cascas, borra de café e folhas. O ciclo começa no que sobra."},{n:"02",emoji:"🍂",title:"Cuide",text:"Materiais secos, umidade e ar: a natureza precisa de equilíbrio."},{n:"03",emoji:"🪱",title:"Transforme",text:"Microrganismos fazem seu trabalho. No minhocário, as minhocas ajudam."},{n:"04",emoji:"🌱",title:"Cultive",text:"O composto maduro devolve nutrientes ao solo. E a vida continua."}].map(x=><article className="cycle-item" key={x.n}><span className="cycle-number">{x.n}</span><div className="cycle-illustration">{x.emoji}</div><h3>{x.title}</h3><p>{x.text}</p></article>)}
-        </div><p className="cycle-caption">Um pequeno gesto. Um ciclo inteiro de possibilidades. <span>↻</span></p>
-      </section>
-      <section id="impacto" className="impact section"><div className="wrap"><div className="section-top"><span className="eyebrow">02 / UM PLANETA MAIS VIVO</span><Leaf size={27}/></div><div className="impact-heading"><h2>O planeta sente<br />a <em>diferença.</em></h2><p>O destino dos seus resíduos importa.<br />E muito mais do que parece.</p></div>
+      <CycleScene/>
+      <section id="impacto" className="impact section"><div className="wrap"><ImpactIntro/>
         <div className="impact-grid"><div className="impact-manifesto"><span className="big-sprout">↗</span><h3>O melhor resíduo é<br />o que não é gerado.</h3><p>Primeiro, evite o desperdício. Para as sobras inevitáveis, a compostagem abre um caminho de volta à terra.</p><a href="https://www.epa.gov/sustainable-management-food/composting" target="_blank" rel="noopener noreferrer">Explore a ciência por trás <ArrowUpRight size={17}/></a></div><div className="benefits">
           {[{icon:Wind,title:"Menos orgânicos nos aterros",text:"Em ambientes sem oxigênio, resíduos orgânicos geram metano, um gás de efeito estufa. A compostagem bem manejada oferece outra rota."},{icon:Sprout,title:"Mais nutrientes no solo",text:"O composto devolve matéria orgânica e nutrientes à terra, ajudando a cultivar plantas e ecossistemas mais saudáveis."},{icon:Droplets,title:"Água que fica, vida que cresce",text:"Solos com composto podem reter melhor a água e resistir à erosão, contribuindo para enfrentar períodos de seca e chuvas intensas."}].map(({icon:Icon,title,text})=><article key={title}><Icon size={26}/><div><h3>{title}</h3><p>{text}</p></div></article>)}
         </div></div><p className="source-note">Benefícios variam com o método e o manejo. Fontes: <a href="https://www.epa.gov/recycle/composting-home" target="_blank" rel="noopener noreferrer">EPA — compostagem doméstica ↗</a></p></div></section>
