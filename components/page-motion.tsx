@@ -41,7 +41,7 @@ export function PageMotion(){
       const desktop = context.conditions.desktop;
       gsap.from(".hero-copy > *",{y:28,opacity:0,duration:.85,stagger:.12,ease:"power3.out",clearProps:"all"});
       gsap.from(".hero-art",{y:30,opacity:0,rotation:3,duration:1.1,ease:"power3.out",clearProps:"all"});
-      gsap.utils.toArray<HTMLElement>(".section-heading, .impact-heading, .benefits article, .cycle-item").forEach(el=>gsap.from(el,{y:32,opacity:0,duration:.7,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true},clearProps:"all"}));
+      gsap.utils.toArray<HTMLElement>(".section-heading, .impact-heading").forEach(el=>gsap.from(el,{y:32,opacity:0,duration:.7,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true},clearProps:"all"}));
       const hero = gsap.timeline({ scrollTrigger: { id: "hero-depth", trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.65 }, defaults: { ease: "none", duration: 1 } });
       hero.fromTo(".hero-photo", { y: 0, rotation: -7 }, { y: desktop ? 64 : 18, rotation: desktop ? -2 : -5 }, 0)
         .to(".round-stamp", { y: desktop ? -45 : -12, rotation: desktop ? 65 : 27 }, 0)
@@ -57,7 +57,14 @@ export function PageMotion(){
         x: desktop ? -120 : -35, ease: "none",
         scrollTrigger: { id: "ticker-drift", trigger: ".ticker", start: "top bottom", end: "bottom top", scrub: 0.5 },
       });
-      gsap.fromTo(".cycle-track",{"--cycle-progress":"0%"},{"--cycle-progress":"100%",ease:"none",scrollTrigger:{trigger:".cycle-track",start:"top 85%",end:"bottom 40%",scrub:1}});
+      const cycle = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: {
+        id: "compost-cycle", trigger: ".cycle-track", start: "top 85%", end: "bottom 35%", scrub: 0.6,
+      } });
+      cycle.fromTo(".cycle-track", { "--cycle-progress": 0 }, { "--cycle-progress": 1, duration: 1 }, 0);
+      gsap.utils.toArray<HTMLElement>(".cycle-illustration").forEach((element, index) => {
+        cycle.fromTo(element, { y: desktop ? 45 : 18, rotation: index % 2 ? 12 : -12, scale: 0.82 },
+          { y: 0, rotation: 0, scale: 1, duration: 0.55 }, index * 0.15);
+      });
     });return()=>media.revert();
   },[]);return null;
 }
