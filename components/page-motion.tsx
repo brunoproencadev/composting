@@ -53,6 +53,10 @@ export function PageMotion(){
         const length = path.getTotalLength();
         gsap.fromTo(path, { strokeDasharray: length, strokeDashoffset: length }, { strokeDashoffset: 0, duration: 1.1, delay: 0.3, ease: "power2.out", clearProps: "strokeDasharray,strokeDashoffset" });
       });
+      gsap.fromTo(".ticker > div", { x: desktop ? 120 : 35 }, {
+        x: desktop ? -120 : -35, ease: "none",
+        scrollTrigger: { id: "ticker-drift", trigger: ".ticker", start: "top bottom", end: "bottom top", scrub: 0.5 },
+      });
       gsap.fromTo(".cycle-track",{"--cycle-progress":"0%"},{"--cycle-progress":"100%",ease:"none",scrollTrigger:{trigger:".cycle-track",start:"top 85%",end:"bottom 40%",scrub:1}});
     });return()=>media.revert();
   },[]);return null;
