@@ -83,6 +83,8 @@ export function PageMotion(){
       guide.fromTo(".guide-pot", { y: desktop ? 32 : 12, rotation: -18 }, { y: desktop ? -24 : -8, rotation: 4 }, 0)
         .fromTo(".guide-flower", { rotation: -25, y: 16 }, { rotation: desktop ? 65 : 15, y: -12 }, 0)
         .fromTo(".guide-tag", { y: 14, rotation: -12 }, { y: -10, rotation: -3 }, 0);
+      gsap.fromTo(".result-emoji", { y: desktop ? 18 : 8, rotation: -18 }, { y: desktop ? -18 : -6, rotation: 6, ease: "none",
+        scrollTrigger: { id: "material-depth", trigger: ".material-result", start: "top 90%", end: "bottom 20%", scrub: 0.5 } });
     });return()=>media.revert();
   },[]);return null;
 }
