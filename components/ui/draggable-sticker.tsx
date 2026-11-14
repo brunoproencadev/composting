@@ -21,7 +21,7 @@ export function StickerField({variant}: {variant:keyof typeof placements}) {
   const help = useId();
   const bounded = (i:number,x:number,y:number) => {
     const box = field.current?.getBoundingClientRect();
-    return box ? boundSticker(x,y,box.width,box.height,buttons.current[i]?.offsetWidth??64) : {x,y};
+    return box ? boundSticker(x,y,box.width,box.height,buttons.current[i]?.getBoundingClientRect().width??64) : {x,y};
   };
   const move = (i:number,x:number,y:number) => setPositions(old=>old.map((p,index)=>index===i?bounded(i,x,y):p));
   const reset = (i:number) => {move(i,home[i].x,home[i].y);setSelected(null);};
@@ -29,7 +29,7 @@ export function StickerField({variant}: {variant:keyof typeof placements}) {
     const el=field.current;if(!el)return;
     const observer=new ResizeObserver(()=>{
       const box=el.getBoundingClientRect();
-      setPositions(old=>old.map((p,i)=>boundSticker(p.x,p.y,box.width,box.height,buttons.current[i]?.offsetWidth??64)));
+      setPositions(old=>old.map((p,i)=>boundSticker(p.x,p.y,box.width,box.height,buttons.current[i]?.getBoundingClientRect().width??64)));
     });observer.observe(el);return()=>observer.disconnect();
   },[]);
   return <div ref={field} className={`sticker-field sticker-field-${variant}${selected!==null?" is-placing":""}`} onClick={e=>{
@@ -47,7 +47,7 @@ export function StickerField({variant}: {variant:keyof typeof placements}) {
         const dx=e.clientX-d.px,dy=e.clientY-d.py;if(!d.moved&&Math.hypot(dx,dy)<4)return;
         d.moved=true;move(i,d.x+dx/box.width*100,d.y+dy/box.height*100);
       }} onPointerUp={()=>{suppressClick.current=!!drag.current?.moved;drag.current=null;}}
-      onPointerCancel={()=>{drag.current=null;suppressClick.current=true;}}
+      onPointerCancel={()=>{drag.current=null;suppressClick.current=false;}}
       onLostPointerCapture={()=>{drag.current=null;}}
       onClick={()=>{if(suppressClick.current){suppressClick.current=false;return;}setSelected(old=>old===i?null:i);}}
       onKeyDown={e=>{
