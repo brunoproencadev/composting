@@ -1,6 +1,7 @@
+import { PageMotion } from "@/components/page-motion";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Leaf, Sprout, Droplets, Wind, MoveUpRight } from "lucide-react";
-import { SiteHeader, PageMotion, SiteFooter } from "@/components/site-shell";
+import { SiteHeader, SiteFooter } from "@/components/site-shell";
 import { CompostGuide, MaterialExplorer, StartChecklist } from "@/components/compost-interactions";
 
 const faqs = [
