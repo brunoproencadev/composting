@@ -65,6 +65,18 @@ export function PageMotion(){
         cycle.fromTo(element, { y: desktop ? 45 : 18, rotation: index % 2 ? 12 : -12, scale: 0.82 },
           { y: 0, rotation: 0, scale: 1, duration: 0.55 }, index * 0.15);
       });
+      gsap.fromTo(".impact-manifesto", { "--panel-rotation": "-5deg", "--panel-rise": "24px" }, {
+        "--panel-rotation": "1deg", "--panel-rise": "-8px", ease: "none",
+        scrollTrigger: { id: "impact-panel", trigger: ".impact-grid", start: "top 90%", end: "bottom 30%", scrub: 0.7 },
+      });
+      gsap.fromTo(".big-sprout", { display: "inline-block", y: 12, rotation: -18 }, {
+        y: -12, rotation: 10, ease: "none",
+        scrollTrigger: { trigger: ".impact-grid", start: "top bottom", end: "bottom top", scrub: 0.7 },
+      });
+      gsap.utils.toArray<SVGElement>(".benefits article > svg").forEach(element => {
+        gsap.fromTo(element, { y: desktop ? 18 : 8, rotation: -12 }, { y: -6, rotation: 8, ease: "none",
+          scrollTrigger: { trigger: element.parentElement, start: "top 90%", end: "bottom 25%", scrub: 0.5 } });
+      });
     });return()=>media.revert();
   },[]);return null;
 }
