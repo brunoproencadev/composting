@@ -4,7 +4,7 @@ import { PageMotion } from "@/components/page-motion";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Leaf, Sprout, Droplets, Wind, MoveUpRight } from "lucide-react";
 import { SiteHeader, SiteFooter } from "@/components/site-shell";
-import { CompostGuide, MaterialExplorer, StartChecklist } from "@/components/compost-interactions";
+import { CompostGuide, MaterialExplorer, StartKit } from "@/components/compost-interactions";
 
 const faqs = [
   ["Compostagem tem cheiro ruim?", "Uma composteira bem cuidada tem cheiro de terra. Mau cheiro costuma indicar excesso de umidade ou falta de ar. Na compostagem de quintal, misture e adicione folhas secas. No minhocário, reduza a alimentação, confira a drenagem e cubra os resíduos com material seco."],
@@ -44,7 +44,7 @@ export default function Home() {
       <section id="como-fazer" className="section wrap"><div className="section-top"><span className="eyebrow">03 / MÃO NA TERRA</span><span className="tiny-note">NÃO PRECISA SER COMPLICADO.</span></div><div className="section-heading"><h2>Seu espaço.<br />Seu <em>primeiro ciclo.</em></h2><p>Um quintal ou um cantinho protegido. Escolha o caminho que faz sentido para sua casa e comece no seu ritmo.</p></div><CompostGuide/></section>
       <section id="materiais" className="materials section"><div className="wrap"><div className="section-top"><span className="eyebrow">04 / CADA COISA NO SEU LUGAR</span><span>✳</span></div><div className="section-heading"><h2>Vai pra<br /><em>composteira?</em></h2><p>Nem tudo que é orgânico deve entrar na sua composteira doméstica. Toque em um material e descubra o destino certo.</p></div><MaterialExplorer/></div></section>
       <section id="duvidas" className="section wrap faq-section"><div><span className="eyebrow">05 / É NORMAL TER DÚVIDAS</span><h2>Vamos<br /><em>descomplicar.</em></h2><span className="faq-doodle" aria-hidden="true">?</span></div><div className="faq-list">{faqs.map(([q,a],i)=><details key={q}><summary><span className="faq-number">0{i+1}</span>{q}<span className="faq-plus">+</span></summary><p>{a}</p></details>)}</div></section>
-      <section id="comece" className="start section wrap"><span className="eyebrow">UM NOVO HÁBITO PODE COMEÇAR HOJE</span><h2>O amanhã se planta<br /><em>com o que sobra hoje.</em></h2><p>Sem perfeição. Sem pressa. Um passo de cada vez.</p><StartChecklist/><a className="button primary" href="#como-fazer">Meu primeiro passo <ArrowUpRight size={20}/></a></section>
+      <section id="comece" className="start-kit section wrap"><StartKit/></section>
     </main>
     <SiteFooter/><PageMotion/>
   </>;
