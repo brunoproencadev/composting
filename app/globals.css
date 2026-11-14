@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 html,body{overflow-x:clip}
 main{overflow-x:clip}
 :root{--background:#f4f0e6;--foreground:#173d2b;--muted:#596451;--lime:#d5e86c;--border:#173d2b26;--radius:.8rem;--primary:#173d2b;--primary-foreground:#f4f0e6;--ring:#365d31}
