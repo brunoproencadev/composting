@@ -3,7 +3,7 @@ export default async function verifyScenes() {
   const wait=()=>new Promise(r=>setTimeout(r,900));
   const go=async y=>{scrollTo({top:y,behavior:"instant"});await wait();};
   const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const pinExpected=!reduced&&innerWidth>=1024&&innerHeight>=800;
+  const pinExpected=!reduced&&innerWidth>=1024&&innerHeight>=800&&matchMedia("(pointer: fine)").matches;
   assert(document.querySelectorAll(".pin-spacer").length===(pinExpected?2:0),"Expected exactly two eligible pins or none");
   if(pinExpected){
     const stage=document.querySelector(".cycle-stage"),spacer=stage.parentElement;
