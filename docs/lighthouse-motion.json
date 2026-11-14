@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-14",
+  "url": "http://localhost:3000/",
+  "mode": "navigation",
+  "device": "mobile",
+  "categories": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100,
+    "agentic-browsing": 100
+  },
+  "failedAudits": [],
+  "performanceScoreIncluded": false
+}

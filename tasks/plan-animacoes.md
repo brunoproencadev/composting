@@ -1,6 +1,6 @@
 # Segunda versão — scroll e movimento
 
-Status: planejamento. A implementação desta etapa ainda não começou. Complementa tasks/plan.md; as pendências anteriores permanecem em tasks/todo.md.
+Status: implementado e verificado localmente. Resultados e limites em docs/validacao.md. Complementa tasks/plan.md; as pendências anteriores permanecem em tasks/todo.md. As etapas de suavização e proteção de toque/reduced motion foram entregues juntas; houve um commit adicional para corrigir contraste identificado pelo Lighthouse.
 
 ## Objetivo
 
@@ -60,18 +60,18 @@ Valores são pontos de partida, não requisitos rígidos: ajustar após ver no n
 
 Cada commit futuro será feito após seu trecho funcionar; separar correções reais conforme surgirem, sem commits vazios ou alterações artificiais para inflar a contagem.
 
-1. [ ] refactor(motion): isolate page animation lifecycle — extrair PageMotion sem mudar aparência; provar lint/typecheck e ausência de duplicação de triggers após remontagem.
-2. [ ] feat(scroll): integrate smooth wheel scrolling — Lenis no ticker único; provar âncoras, interrupção e scrollbar.
-3. [ ] fix(scroll): preserve native touch and reduced motion — condições e cleanup; provar troca de preferência e teclado.
-4. [ ] feat(hero): add layered scroll parallax — foto, selo, etiqueta, estrela e órbitas; conferir conflito entre entrada e scrub.
-5. [ ] feat(motion): link ticker movement to scroll — conferir reversão e overflow em 320 px.
-6. [ ] feat(cycle): choreograph composting stages — timeline do ciclo com leitura estável; testar avanço/retorno.
-7. [ ] feat(impact): animate manifesto and benefit visuals — profundidade e ícones; manter links imóveis durante interação.
-8. [ ] feat(guide): animate composting illustrations — troca de método mantém os passos e o visual corretos.
-9. [ ] feat(materials): animate material transitions — transição visual sem atrasar aria-live ou texto.
-10. [ ] feat(motion): finish faq and closing transitions — harmonizar chegada ao footer preservando seu funcionamento.
-11. [ ] test(motion): verify scroll lifecycle and accessibility — teste pequeno de comportamento relevante com ferramentas existentes e roteiro de navegador.
-12. [ ] docs(motion): record validation and remaining limits — resultados medidos, limitações reais e instruções de revisão.
+1. [x] refactor(motion): isolate page animation lifecycle — extrair PageMotion sem mudar aparência; provar lint/typecheck e ausência de duplicação de triggers após remontagem.
+2. [x] feat(scroll): integrate smooth wheel scrolling — Lenis no ticker único; provar âncoras, interrupção e scrollbar.
+3. [x] fix(scroll): preserve native touch and reduced motion — condições e cleanup; provar troca de preferência e teclado.
+4. [x] feat(hero): add layered scroll parallax — foto, selo, etiqueta, estrela e órbitas; conferir conflito entre entrada e scrub.
+5. [x] feat(motion): link ticker movement to scroll — conferir reversão e overflow em 320 px.
+6. [x] feat(cycle): choreograph composting stages — timeline do ciclo com leitura estável; testar avanço/retorno.
+7. [x] feat(impact): animate manifesto and benefit visuals — profundidade e ícones; manter links imóveis durante interação.
+8. [x] feat(guide): animate composting illustrations — troca de método mantém os passos e o visual corretos.
+9. [x] feat(materials): animate material transitions — transição visual sem atrasar aria-live ou texto.
+10. [x] feat(motion): finish faq and closing transitions — harmonizar chegada ao footer preservando seu funcionamento.
+11. [x] test(motion): verify scroll lifecycle and accessibility — teste pequeno de comportamento relevante com ferramentas existentes e roteiro de navegador.
+12. [x] docs(motion): record validation and remaining limits — resultados medidos, limitações reais e instruções de revisão.
 
 Checkpoints: após 1–3 validar o motor de scroll; após 4–6 validar direção visual; após 7–10 validar todos os controles; após 11–12 fechar a entrega. Essas revisões são verificações de implementação, sem autorização extra para mudanças já cobertas pelo pedido.
 

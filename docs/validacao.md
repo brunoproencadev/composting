@@ -26,3 +26,19 @@ A navbar recebeu cleanup de recursos WebGL e áudio, pausa por visibilidade, atu
 - Licença específica dos componentes e identificação/autoria da foto precisam ser confirmadas antes de publicação. Fontes e proveniência estão no README. Não há contatos nem redes inventadas.
 - Primeiro escopo usa profundidade por CSS, SVG e WebGL da navbar; não inclui cena Three.js, analytics, backend ou persistência de checklist.
 - O ciclo usa ilustrações com emojis do dispositivo em vez de um modelo 3D; sua aparência varia por sistema.
+
+## Segunda versão — animações ligadas ao scroll
+
+Implementação: Lenis 1.3.27 + GSAP, com uma instância de suavização por página em desktop/ponteiro preciso; toque permanece nativo. As cenas foram extraídas para components/page-motion.tsx. Hero, faixa, ciclo, painel de impacto, ícones, guia, materiais e doodle respondem ao scroll. Ilustrações trocam com uma transição CSS curta, mantendo a resposta textual imediata. O ciclo anima scaleX da linha em vez de sua largura. Links do manifesto ficam imóveis; apenas o fundo e o ícone se movem. ResizeObserver atualiza as medidas quando FAQ ou conteúdo alteram a altura.
+
+Provas desta etapa:
+
+- Lint, typecheck, os dois testes de conteúdo e build final de produção passaram.
+- tests/motion.browser.mjs executado no Chrome em desktop, mobile 320 px e preferência de movimento reduzido simulada. Passaram: wheel gradual onde aplicável, reversão do hero, âncora com offset correto, atualização do hash, voltar no histórico, guia, materiais, FAQ, checklist, movimentação/reset de adesivo e replay do footer.
+- A build de produção passou novamente pelo mesmo roteiro em desktop. Teclas reais End e Home levaram ao fim e ao início do documento sem travar a página.
+- Simulação de alteração de matchMedia com a página aberta: listeners wheel registrados por window.addEventListener passaram de 4 para 3 ao reduzir movimento e voltaram para 4 ao restaurá-lo; a classe Lenis foi removida/restaurada e o transform inline do hero foi revertido. Contagem inclui listeners do ScrollTrigger; não significa quatro instâncias de Lenis.
+- A revisão automática bloqueou iniciar um Chrome separado com porta de depuração para emulação nativa de reduced motion. Foi usado o navegador já disponível, com simulação JS das consultas e seus eventos de mudança; isso não prova a preferência nativa do sistema nem sua aplicação CSS. Mobile/touch foi emulado pelo recurso de viewport da ferramenta.
+- Lighthouse navigation/mobile da build de produção: acessibilidade 100, boas práticas 100, SEO 100, 55 auditorias aprovadas e nenhuma falha. O primeiro resultado foi acessibilidade 97; corrigido o contraste de .cycle-number e repetida a auditoria. Esta ferramenta não inclui pontuação de performance. Resumo preservado em docs/lighthouse-motion.json.
+- Trace local de carregamento, Chrome, CPU simulada em 4×, sem limitação de rede: LCP 735 ms e CLS 0,00. Sem dados de campo/CrUX ou INP representativo. Cache local, tamanho da janela e ambiente de teste limitam a comparação com usuários reais.
+
+Continuam pendentes Safari/Firefox, dispositivo físico e teste nativo de reduced motion. Alertas de dependências de desenvolvimento, confirmação de licenças e configuração do domínio permanecem os registrados acima. Não houve deploy.
