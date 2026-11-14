@@ -6,6 +6,7 @@ import Lenis from "lenis";
 
 export function PageMotion(){
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
     media.add("(min-width: 761px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
       const lenis = new Lenis({ autoRaf: false, lerp: 0.12, syncTouch: false, anchors: false });
@@ -35,11 +36,23 @@ export function PageMotion(){
   useEffect(()=>{
     gsap.registerPlugin(ScrollTrigger);
     const media=gsap.matchMedia();
-    media.add("(prefers-reduced-motion: no-preference)",()=>{
+    media.add({ desktop: "(min-width: 761px) and (pointer: fine)", motion: "(prefers-reduced-motion: no-preference)" },(context)=>{
+      if (!context.conditions?.motion) return;
+      const desktop = context.conditions.desktop;
       gsap.from(".hero-copy > *",{y:28,opacity:0,duration:.85,stagger:.12,ease:"power3.out",clearProps:"all"});
       gsap.from(".hero-art",{y:30,opacity:0,rotation:3,duration:1.1,ease:"power3.out",clearProps:"all"});
       gsap.utils.toArray<HTMLElement>(".section-heading, .impact-heading, .benefits article, .cycle-item").forEach(el=>gsap.from(el,{y:32,opacity:0,duration:.7,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true},clearProps:"all"}));
-      gsap.to(".hero-photo",{yPercent:8,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:1}});
+      const hero = gsap.timeline({ scrollTrigger: { id: "hero-depth", trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.65 }, defaults: { ease: "none", duration: 1 } });
+      hero.fromTo(".hero-photo", { y: 0, rotation: -7 }, { y: desktop ? 64 : 18, rotation: desktop ? -2 : -5 }, 0)
+        .to(".round-stamp", { y: desktop ? -45 : -12, rotation: desktop ? 65 : 27 }, 0)
+        .to(".art-label", { y: desktop ? -30 : -10, rotation: -3 }, 0)
+        .to(".doodle-star", { y: desktop ? 50 : 12, rotation: desktop ? 90 : 25 }, 0)
+        .to(".orbit-one", { rotation: desktop ? 58 : 32 }, 0)
+        .to(".orbit-two", { rotation: desktop ? -52 : -30 }, 0);
+      gsap.utils.toArray<SVGPathElement>(".word-flower path").forEach(path => {
+        const length = path.getTotalLength();
+        gsap.fromTo(path, { strokeDasharray: length, strokeDashoffset: length }, { strokeDashoffset: 0, duration: 1.1, delay: 0.3, ease: "power2.out", clearProps: "strokeDasharray,strokeDashoffset" });
+      });
       gsap.fromTo(".cycle-track",{"--cycle-progress":"0%"},{"--cycle-progress":"100%",ease:"none",scrollTrigger:{trigger:".cycle-track",start:"top 85%",end:"bottom 40%",scrub:1}});
     });return()=>media.revert();
   },[]);return null;
